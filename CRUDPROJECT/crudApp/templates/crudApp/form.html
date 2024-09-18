@@ -1,0 +1,42 @@
+{% extends "crudApp/base.html" %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="text-center alert alert-info">CRUD Project</h1>
+        <div class="col">
+            <h2 class="text-center alert alert-success">Add Student Information</h2>
+            <form method="POST" class="form alert alert-danger"action="{% url "form" %}">
+              {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Age</label>
+                    <input type="number" name="age" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" name="message" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Message</label>
+                  </div><br>
+                <button type="submit" class="btn btn-primary">Register</button>
+
+              </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
